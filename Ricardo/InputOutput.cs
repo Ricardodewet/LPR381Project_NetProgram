@@ -8,18 +8,6 @@ namespace LP2
 {
     internal class InputOutput
     {
-        //public void DisplaySolution(double[,] tableau, int numRows, int numCols, int[] basicVariables)
-        //{
-        //    PrintTableau(tableau, numRows, numCols);
-
-        //    Console.WriteLine("Optimal Solution Found:");
-        //    for (int i = 0; i < numRows - 1; i++) // Adjusted to handle updated numRows
-        //    {
-        //        Console.WriteLine($"x{basicVariables[i] + 1} = {tableau[i, numCols - 1]:F2}");
-        //    }
-        //    Console.WriteLine($"Optimal value: {tableau[numRows - 1, numCols - 1]:F2}");
-        //    Console.WriteLine("__________________________________________________________________________________________________");
-        //}
 
         public void DisplaySolution(double[,] tableau, int numRows, int numCols, int[] basicVariables)
         {

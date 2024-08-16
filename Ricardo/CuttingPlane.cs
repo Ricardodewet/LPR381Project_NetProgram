@@ -53,7 +53,7 @@ namespace LP2
                 Simplex.InitializeTableau(updatedTableau); // Ensure the Simplex instance uses the updated tableau
 
                 // Solve with the updated tableau
-                Simplex.SimplexSolver();
+                Simplex.DualSimplexSolver();
 
                 // Check if the new solution is closer to being integer
                 bool isIntegerSolution = true;
@@ -75,6 +75,8 @@ namespace LP2
                 }
             }
         }
+
+
 
         private double[,] AddCuttingPlane(double[,] tableau, int numRows, int numCols, int[] basicVariables)
         {
@@ -121,7 +123,7 @@ namespace LP2
                 double fractionalPart = tableau[fracRow, j] - Math.Floor(tableau[fracRow, j]);
                 updatedTableau[numRows, j] = -fractionalPart; // Add negative fractional part to the new row
             }
-           
+
             // Set the RHS value of the new constraint
             double rhsFractionalPart = tableau[fracRow, numCols - 1] - Math.Floor(tableau[fracRow, numCols - 1]);
             updatedTableau[numRows, numCols - 1] = -rhsFractionalPart;
