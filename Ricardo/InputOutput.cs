@@ -8,7 +8,7 @@ namespace LP2
 {
     internal class InputOutput
     {
-
+        //Table plus some analysis on the optimal values
         public void DisplaySolution(double[,] tableau, int numRows, int numCols, int[] basicVariables)
         {
             PrintTableau(tableau, numRows, numCols);
@@ -32,7 +32,7 @@ namespace LP2
         }
 
 
-
+        //Display the vvalues in a table format
 
         private void PrintTableau(double[,] tableau, int numRows, int numCols)
         {

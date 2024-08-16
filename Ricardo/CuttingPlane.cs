@@ -22,10 +22,11 @@ namespace LP2
         {
             while (true)
             {
+                //set defualt values
                 int fracRow = -1;
                 double fracValue = 0.0;
 
-                for (int i = 0; i < numRows - 1; i++)
+                for (int i = 0; i < numRows - 1; i++)   //setting up the table
                 {
                     double value = tableau[i, numCols - 1];
                     if (Math.Abs(value - Math.Round(value)) > 0)
@@ -52,7 +53,7 @@ namespace LP2
 
                 Simplex.InitializeTableau(updatedTableau); // Ensure the Simplex instance uses the updated tableau
 
-                // Solve with the updated tableau
+                // Do Dual Simplex on the tableau
                 Simplex.DualSimplexSolver();
 
                 // Check if the new solution is closer to being integer
@@ -105,7 +106,7 @@ namespace LP2
                 throw new InvalidOperationException("No valid fractional row found for cutting plane.");
             }
 
-            // Increase the size of the tableau to accommodate the new constraint
+            // Increase the size of the tableau for new constraint
             double[,] updatedTableau = new double[numRows + 1, numCols + 1];
 
             // Copy the old tableau into the new one
@@ -117,7 +118,7 @@ namespace LP2
                 }
             }
 
-            // Add the new constraint (cutting plane) in the second last row
+            // Add the new constraint
             for (int j = 0; j < numCols - 1; j++)
             {
                 double fractionalPart = tableau[fracRow, j] - Math.Floor(tableau[fracRow, j]);
@@ -126,26 +127,22 @@ namespace LP2
 
             // Set the RHS value of the new constraint
             double rhsFractionalPart = tableau[fracRow, numCols - 1] - Math.Floor(tableau[fracRow, numCols - 1]);
-            updatedTableau[numRows, numCols - 1] = -rhsFractionalPart;
+            updatedTableau[numRows, numCols - 1] = -rhsFractionalPart;            
+            updatedTableau[numRows, numCols] = 0; 
 
-            // The new row is a basic variable for the new column
-            updatedTableau[numRows, numCols] = 0; // Initial RHS value for the new constraint
-
-            // Update the basicVariables array to include the new basic variable
+            // Update the basicVariables array 
             int[] newBasicVariables = new int[basicVariables.Length + 1];
 
-            // Copy the existing basic variables into the new array
+            // new basic variables
             for (int i = 0; i < basicVariables.Length; i++)
             {
                 newBasicVariables[i] = basicVariables[i];
             }
 
-            // Add the new basic variable index (the new column index) to the end of the new array
+            // add column
             newBasicVariables[newBasicVariables.Length - 1] = numCols - 1;
 
-            // Update the basicVariables reference
-            basicVariables = newBasicVariables;
-
+            //Switch the 2nd last and last row 
             for (int i = 0; i < numCols; i++)
             {
                 double a = updatedTableau[numRows, i];
@@ -154,15 +151,16 @@ namespace LP2
                 updatedTableau[numRows, i] = b;
             }
 
+            // Switch the 2nd last and last column
             for (int i = 0; i <= numRows; i++)
             {
                 updatedTableau[i, numCols] = updatedTableau[i, numCols - 1];
                 updatedTableau[i, numCols - 1] = 0;
             }
 
-            updatedTableau[numRows - 1, numCols - 1] = 1;
+            updatedTableau[numRows - 1, numCols - 1] = 1; // Set slack value
 
-            return updatedTableau; // Return the updated tableau
+            return updatedTableau; 
         }
 
     }

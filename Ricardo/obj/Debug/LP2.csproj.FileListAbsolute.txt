@@ -6,3 +6,11 @@ C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Pro
 C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Programming\Assignment\Main Project\LP2\obj\Debug\LP2.csproj.CoreCompileInputs.cache
 C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Programming\Assignment\Main Project\LP2\obj\Debug\LP2.exe
 C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Programming\Assignment\Main Project\LP2\obj\Debug\LP2.pdb
+C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Programming\Assignment\LPR381Project_NetProgram\Ricardo\bin\Debug\LP2.exe.config
+C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Programming\Assignment\LPR381Project_NetProgram\Ricardo\bin\Debug\LP2.exe
+C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Programming\Assignment\LPR381Project_NetProgram\Ricardo\bin\Debug\LP2.pdb
+C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Programming\Assignment\LPR381Project_NetProgram\Ricardo\obj\Debug\LP2.csproj.AssemblyReference.cache
+C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Programming\Assignment\LPR381Project_NetProgram\Ricardo\obj\Debug\LP2.csproj.SuggestedBindingRedirects.cache
+C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Programming\Assignment\LPR381Project_NetProgram\Ricardo\obj\Debug\LP2.csproj.CoreCompileInputs.cache
+C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Programming\Assignment\LPR381Project_NetProgram\Ricardo\obj\Debug\LP2.exe
+C:\Users\ricdw\OneDrive\Documents\A_Studies\Belgium Campus\Third Year\Linear Programming\Assignment\LPR381Project_NetProgram\Ricardo\obj\Debug\LP2.pdb
