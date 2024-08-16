@@ -1,0 +1,7 @@
+C:\Users\berno\source\repos\Knapsack2ElectricBoogaloo\Knapsack2ElectricBoogaloo\bin\Debug\Knapsack2ElectricBoogaloo.exe.config
+C:\Users\berno\source\repos\Knapsack2ElectricBoogaloo\Knapsack2ElectricBoogaloo\bin\Debug\Knapsack2ElectricBoogaloo.exe
+C:\Users\berno\source\repos\Knapsack2ElectricBoogaloo\Knapsack2ElectricBoogaloo\bin\Debug\Knapsack2ElectricBoogaloo.pdb
+C:\Users\berno\source\repos\Knapsack2ElectricBoogaloo\Knapsack2ElectricBoogaloo\obj\Debug\Knapsack2ElectricBoogaloo.csproj.AssemblyReference.cache
+C:\Users\berno\source\repos\Knapsack2ElectricBoogaloo\Knapsack2ElectricBoogaloo\obj\Debug\Knapsack2ElectricBoogaloo.csproj.CoreCompileInputs.cache
+C:\Users\berno\source\repos\Knapsack2ElectricBoogaloo\Knapsack2ElectricBoogaloo\obj\Debug\Knapsack2ElectricBoogaloo.exe
+C:\Users\berno\source\repos\Knapsack2ElectricBoogaloo\Knapsack2ElectricBoogaloo\obj\Debug\Knapsack2ElectricBoogaloo.pdb

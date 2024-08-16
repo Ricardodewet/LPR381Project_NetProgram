@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knapsack2ElectricBoogaloo", "Knapsack2ElectricBoogaloo\Knapsack2ElectricBoogaloo.csproj", "{75C6A2B3-4D75-4059-8DA0-E78B5282565D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75C6A2B3-4D75-4059-8DA0-E78B5282565D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C6A2B3-4D75-4059-8DA0-E78B5282565D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C6A2B3-4D75-4059-8DA0-E78B5282565D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C6A2B3-4D75-4059-8DA0-E78B5282565D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FAEDE450-8B0A-4C74-8F60-5AFDC4263606}
+	EndGlobalSection
+EndGlobal
