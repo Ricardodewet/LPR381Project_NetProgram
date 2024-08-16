@@ -11,12 +11,12 @@ namespace Knapsack2ElectricBoogaloo
     {
         public string CheckInputFile()
         {
-            string filepath = @"C:\Users\berno\source\repos\Knapsack\Knapsack\Input File\input.txt";
+            string filepath = @"C:\Users\berno\source\repos\Knapsack2\Knapsack2ElectricBoogaloo\Input\input.txt";
             if (File.Exists(filepath))
             {
                 var tfInput = File.ReadAllText(filepath);
 
-                //Console.Write(tfInput);
+                Console.Write(tfInput);
 
                 return (tfInput);
 
