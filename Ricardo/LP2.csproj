@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="CuttingPlane.cs" />
     <Compile Include="InputOutput.cs" />
     <Compile Include="PrimalSimplex.cs" />

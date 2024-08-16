@@ -3,40 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static LP2.Program;
 
 namespace LP2
 {
     internal class PrimalSimplex
     {
-        private CuttingPlane cp;
-        InputOutput inout = new InputOutput();
+        public CuttingPlane cp;
+        private InputOutput inout;
 
-        public enum Objective { Maximize, Minimize }
-        public enum VariableType { Integer, Binary }
 
-        public Objective ProblemObjective { get; set; }
-        public VariableType VarType { get; set; }
         private double[,] tableau;
         private int[] basicVariables;
         private int numRows;
         private int numCols;
-        private Program.Objective objective;
-        private Program.VariableType varType;
 
-        public PrimalSimplex(Objective objective, VariableType variableType)
+        public Objective ProblemObjective { get; set; }
+        public VariableType VarType { get; set; }
+
+        public PrimalSimplex(Objective objective, VariableType variableType, CuttingPlane cuttingPlane, InputOutput io)
         {
             ProblemObjective = objective;
             VarType = variableType;
+            cp = cuttingPlane;
+            inout = io;
         }
+
         public PrimalSimplex()
         {
         }
 
-        public PrimalSimplex(Program.Objective objective, Program.VariableType varType)
-        {
-            this.objective = objective;
-            this.varType = varType;
-        }
+
 
         // Method to initialize the tableau for the Simplex method
         public void InitializeTableau(double[,] inputTableau)
@@ -58,7 +55,6 @@ namespace LP2
             while (true)
             {
                 int pivotCol = 0;
-                int tblnum = 1;
 
                 // Determine the entering variable (most negative for Max, most positive for Min)
                 if (ProblemObjective == Objective.Maximize)
@@ -72,6 +68,7 @@ namespace LP2
                             pivotCol = j;
                         }
                     }
+
                 }
                 else
                 {
@@ -87,8 +84,7 @@ namespace LP2
                 }
 
                 // Check if optimal (no negative for Max, no positive for Min)
-                if ((ProblemObjective == Objective.Maximize && tableau[numRows - 1, pivotCol] >= 0) ||
-                    (ProblemObjective == Objective.Minimize && tableau[numRows - 1, pivotCol] <= 0))
+                if ((ProblemObjective == Objective.Maximize && tableau[numRows - 1, pivotCol] >= 0) || (ProblemObjective == Objective.Minimize && tableau[numRows - 1, pivotCol] <= 0))
                 {
                     break;
                 }
@@ -120,12 +116,9 @@ namespace LP2
 
                 // Update basic variables
                 basicVariables[pivotRow] = pivotCol;
-
-                Console.WriteLine("Tableau-" + tblnum);
-                tblnum++;
-                PivotTable(tableau, numRows, numCols, basicVariables);
             }
-            
+            Console.WriteLine("Next Pivot Table:");
+            PivotTable(tableau, numRows, numCols, basicVariables);
         }
 
         private void Pivot(int pivotRow, int pivotCol)
@@ -151,18 +144,38 @@ namespace LP2
                 }
             }
 
-            InitializeTableau(tableau);
+            //InitializeTableau(tableau);
         }
 
         public void PivotTable(double[,] tableau, int numRows, int numCols, int[] basicVariables)
         {
-            inout.DisplaySolution(tableau, numRows, numCols, basicVariables);
+            for (int i = 0; i < numRows; i++)
+            {
+                for (int j = 0; j < numCols; j++)
+                {
+                    Console.Write($"{tableau[i, j],-10:F2} ");
+                }
+                Console.WriteLine();
+            }
         }
+    
 
         private void StartTableau()
         {
             Console.WriteLine("Initial Table");
             inout.DisplaySolution(tableau, numRows, numCols, basicVariables);
+        }
+
+        private bool IsIntegerSolution()
+        {
+            for (int i = 0; i < numRows - 1; i++)
+            {
+                if (Math.Abs(tableau[i, numCols - 1] - Math.Round(tableau[i, numCols - 1])) > 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
 
@@ -171,10 +184,19 @@ namespace LP2
         {
             StartTableau();
             SimplexSolver();
+
+            // Save the relaxed tableau before applying Cutting Plane
+            double[,] savedTableau = (double[,])tableau.Clone();
+
             if (VarType == VariableType.Integer || VarType == VariableType.Binary)
             {
-                cp.ApplyCuttingPlane(tableau, numRows, numCols, basicVariables);
+                if (!IsIntegerSolution())
+                {
+                    Console.WriteLine("Applying Cutting Plane Method...");
+                    cp.ApplyCuttingPlane(savedTableau, numRows, numCols, basicVariables);
+                }
             }
         }
+
     }
 }
