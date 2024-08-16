@@ -50,7 +50,7 @@ namespace Knapsack
             }
         }
 
-        List<double> varX = new List<double>();
+        public List<double> varX = new List<double>();
         public List<double> constraints = new List<double>();
         List<string> signRestrictions = new List<string>();
         public List<int> branchedCheck = new List<int>();

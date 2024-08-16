@@ -46,6 +46,16 @@ namespace Knapsack2ElectricBoogaloo
                     Console.WriteLine();
                     
                 }
+                double maxz = 0;
+                for (int x = 0; x < listClass.branchAndBoundList[0].Count; x++)
+                {
+                    if (listClass.branchAndBoundCheckList[0][x] == 0)
+                    {
+                        maxz += listClass.varX[x];
+                    }
+                }
+                Console.WriteLine("Maximum z = " + maxz.ToString());
+                Console.WriteLine();
                 Console.WriteLine("Press any button to close this window.");
                 Console.ReadKey();
             }
