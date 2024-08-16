@@ -1,0 +1,7 @@
+C:\Users\berno\source\repos\Knapsack\Knapsack\bin\Debug\Knapsack.exe.config
+C:\Users\berno\source\repos\Knapsack\Knapsack\bin\Debug\Knapsack.exe
+C:\Users\berno\source\repos\Knapsack\Knapsack\bin\Debug\Knapsack.pdb
+C:\Users\berno\source\repos\Knapsack\Knapsack\obj\Debug\Knapsack.csproj.AssemblyReference.cache
+C:\Users\berno\source\repos\Knapsack\Knapsack\obj\Debug\Knapsack.csproj.CoreCompileInputs.cache
+C:\Users\berno\source\repos\Knapsack\Knapsack\obj\Debug\Knapsack.exe
+C:\Users\berno\source\repos\Knapsack\Knapsack\obj\Debug\Knapsack.pdb
