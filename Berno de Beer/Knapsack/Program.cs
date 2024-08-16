@@ -19,6 +19,17 @@ namespace Knapsack
             listClass.KnapsackStart(gottenList);
             listClass.DetermineRatio();
             listClass.Branch(listClass.constraints, listClass.branchedCheck);
+
+            foreach (var item in listClass.branchAndBoundList)
+            {
+                foreach (var item2 in item)
+                {
+                    Console.Write(" "+item2.ToString());
+                }
+                Console.WriteLine();
+                Console.WriteLine(item);
+            }
+            Console.ReadKey();
         }
     }
 }

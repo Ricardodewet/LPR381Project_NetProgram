@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,7 +75,7 @@ namespace Knapsack
         {
             minmax = lList[0][0];
             limit = lList[1][lList[1].Count() - 1];
-            limit = limit.Remove(0, limit.IndexOf("="));
+            limit = limit.Remove(0, limit.IndexOf("=") + 1);
             length = lList[0].Count() - 1;
 
 
@@ -158,61 +159,108 @@ namespace Knapsack
 
             bool continueCheck = true;
             var i = 0;
-            while (continueCheck) {
+            while (continueCheck)
+            {
                 continueCheck = false;
-                if (testLimit - constraints[i] > 0)
-                {
-                    testLimit -= constraints[i];
-                    continueCheck = true;
-                }
-                else if (testLimit - constraints[i] == 0)
-                {
-                    branchAndBoundList.Add(branchList);
-                    branchAndBoundCheckList.Add(checkList);
-                }
-                else {
-                    branchAndBoundList.Add(branchList);
-                    branchAndBoundCheckList.Add(checkList);
-                    List<double> subOne = new List<double>();
-                    List<double> subTwo = new List<double>();
-                    List<int> subCheck = new List<int>();
+                
+                    if (testLimit - branchList[i] > 0)
+                    {
+                        testLimit -= branchList[i];
 
-                    subOne = branchList;
-                    subTwo = branchList;
-                    subCheck = checkList;
-
-                    subOne[i] = 0;
-                    subCheck[i] = 1;
-
-                    bool subCheckSort = false;
-
-                    while (!subCheckSort) {
-                        subCheckSort = false;
-                        for (int j = 0; j < checkList.Count - 1; j++) { 
-                            if (checkList[j] < checkList[j + 1])
-                            {
-                                subCheckSort = false;
-                                int buffer = checkList[j];
-                                checkList[j] = checkList[j + 1];
-                                checkList[j+1] = buffer;
-
-                                double subProbBuffer;
-                                subProbBuffer = subOne[j];
-                                subOne[j] = subOne[j + 1];
-                                subOne[j+1] = subProbBuffer;
-
-                                subProbBuffer = subTwo[j];
-                                subTwo[j] = subTwo[j + 1];
-                                subTwo[j + 1] = subProbBuffer;
-
-                            }
-                        }
+                    if (i < branchList.Count - 1)
+                    {
+                        //foreach (var item in branchList)
+                        //{
+                        //    Console.Write(item + " ");
+                        //}
+                        //Console.WriteLine();
+                        i++;
+                    }
+                    else
+                    {
+                        branchAndBoundList.Add(branchList);
+                        branchAndBoundCheckList.Add(checkList);
+                        break;
                     }
 
-                    Branch(subOne, subCheck);
-                    Branch(subTwo, subCheck);
+                    continueCheck = true;
+                        //Console.WriteLine(testLimit);
+                    }
+                    else if (testLimit - branchList[i] == 0)
+                    {
+                        branchAndBoundList.Add(branchList);
+                        branchAndBoundCheckList.Add(checkList);
+                        Console.WriteLine("b");
+                    }
+                    else
+                    {
+                        branchAndBoundList.Add(branchList);
+                        branchAndBoundCheckList.Add(checkList);
+                        Console.WriteLine("c");
+                        List<double> subOne = new List<double>();
+                        List<double> subTwo = new List<double>();
+                        List<int> subCheck = new List<int>();
 
-                }
+                        subOne = branchList;
+                        subTwo = branchList;
+                        subCheck = checkList;
+
+                        subOne[i] = 0;
+                        subCheck[i] = 1;
+
+                        bool subCheckSort = false;
+                        bool notOptimal = false;
+                        for (int x = 0; x < subCheck.Count; x++)
+                        {
+                            if (subCheck[x] == 0)
+                            {
+                                notOptimal = true;
+                            }
+                        }
+                        if (notOptimal)
+                        {
+                            while (!subCheckSort)
+                            {
+                                subCheckSort = true;
+                                for (int j = 0; j < checkList.Count - 1; j++)
+                                {
+                                    if (checkList[j] < checkList[j + 1])
+                                    {
+                                        subCheckSort = false;
+                                        int buffer = checkList[j];
+                                        checkList[j] = checkList[j + 1];
+                                        checkList[j + 1] = buffer;
+
+                                        double subProbBuffer;
+                                        subProbBuffer = subOne[j];
+                                        subOne[j] = subOne[j + 1];
+                                        subOne[j + 1] = subProbBuffer;
+
+                                        subProbBuffer = subTwo[j];
+                                        subTwo[j] = subTwo[j + 1];
+                                        subTwo[j + 1] = subProbBuffer;
+
+                                    }
+                                }
+                            }
+                        foreach (var item in subOne)
+                        {
+                            Console.WriteLine("One: "+ item);
+                        }
+
+                        Branch(subOne, subCheck);
+                        
+                        foreach (var item in subTwo)
+                        {
+                            Console.WriteLine("Two: " +item);
+                        }
+                        Branch(subTwo, subCheck);
+                        
+                        }
+                    }
+                
+
+
             }
         }
     }
