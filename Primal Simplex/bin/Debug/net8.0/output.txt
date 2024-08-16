@@ -1,0 +1,2 @@
+Problem Type: Maximisation
+Objective Value: System.Collections.Generic.List`1[System.Double]

@@ -1,0 +1,15 @@
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\obj\Debug\net8.0\Primal Simplex.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\obj\Debug\net8.0\Primal Simplex.AssemblyInfoInputs.cache
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\obj\Debug\net8.0\Primal Simplex.AssemblyInfo.cs
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\obj\Debug\net8.0\Primal Simplex.csproj.CoreCompileInputs.cache
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\bin\Debug\net8.0\Primal Simplex.exe
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\bin\Debug\net8.0\Primal Simplex.deps.json
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\bin\Debug\net8.0\Primal Simplex.runtimeconfig.json
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\bin\Debug\net8.0\Primal Simplex.dll
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\bin\Debug\net8.0\Primal Simplex.pdb
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\obj\Debug\net8.0\Primal Simplex.dll
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\obj\Debug\net8.0\refint\Primal Simplex.dll
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\obj\Debug\net8.0\Primal Simplex.pdb
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\obj\Debug\net8.0\Primal Simplex.genruntimeconfig.cache
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\obj\Debug\net8.0\ref\Primal Simplex.dll
+C:\Users\morne\OneDrive - belgiumcampus.ac.za\3rd Year\LPR381\Project\Primal Simplex Alogrithm\Primal Simplex\Primal Simplex\obj\Debug\net8.0\Primal Simplex.sourcelink.json
