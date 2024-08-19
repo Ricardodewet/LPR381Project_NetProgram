@@ -1,1 +1,175 @@
+using System;
+using System.Collections.Generic;
+using Google.OrTools.LinearSolver;
+
+namespace BranchAndBoundApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Step 1: Get user input for the objective function
+            Console.WriteLine("Enter the coefficients for the objective function (e.g., for 3x + 2y, enter '3 2'):");
+            string? objectiveInput = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(objectiveInput))
+            {
+                Console.WriteLine("Invalid input.");
+                return;
+            }
+            double[] objectiveCoefficients = Array.ConvertAll(objectiveInput.Split(' '), double.Parse);
+
+            // Define the variables based on the number of coefficients
+            string[] variables = new string[objectiveCoefficients.Length];
+            for (int i = 0; i < variables.Length; i++)
+            {
+                variables[i] = $"x{i + 1}";
+            }
+
+            // Step 2: Get user input for the constraints
+            List<ConstraintData> constraints = new List<ConstraintData>();
+            Console.WriteLine("Enter the number of constraints:");
+            if (!int.TryParse(Console.ReadLine(), out int numConstraints))
+            {
+                Console.WriteLine("Invalid number of constraints.");
+                return;
+            }
+
+            for (int i = 0; i < numConstraints; i++)
+            {
+                Console.WriteLine($"Enter the coefficients for constraint {i + 1} (e.g., for x1 + x2 <= 4, enter '1 1'):");
+                string? constraintInput = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(constraintInput))
+                {
+                    Console.WriteLine("Invalid input.");
+                    return;
+                }
+                double[] coefficients = Array.ConvertAll(constraintInput.Split(' '), double.Parse);
+
+                Console.WriteLine($"Enter the right-hand side value for constraint {i + 1}:");
+                if (!double.TryParse(Console.ReadLine(), out double rhs))
+                {
+                    Console.WriteLine("Invalid RHS value.");
+                    return;
+                }
+
+                Console.WriteLine($"Enter the inequality sign for constraint {i + 1} (<=, >=, =):");
+                string? sign = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(sign) || (sign != "<=" && sign != ">=" && sign != "="))
+                {
+                    Console.WriteLine("Invalid inequality sign.");
+                    return;
+                }
+
+                constraints.Add(new ConstraintData(coefficients, rhs, sign));
+            }
+
+            // Step 3: Solve the Mixed Integer Programming (MIP) problem
+            Solver solver = Solver.CreateSolver("CBC_MIXED_INTEGER_PROGRAMMING");
+            if (solver == null)
+            {
+                Console.WriteLine("Could not create solver.");
+                return;
+            }
+
+            Dictionary<string, Variable> mipVariables = new Dictionary<string, Variable>();
+
+            for (int i = 0; i < variables.Length; i++)
+            {
+                mipVariables[variables[i]] = solver.MakeIntVar(0.0, double.PositiveInfinity, variables[i]);
+            }
+
+            Objective objective = solver.Objective();
+            for (int i = 0; i < variables.Length; i++)
+            {
+                objective.SetCoefficient(mipVariables[variables[i]], objectiveCoefficients[i]);
+            }
+            objective.SetMaximization();
+
+            // Add constraints to the MIP solver
+            foreach (var constraintData in constraints)
+            {
+                AddConstraint(solver, mipVariables, constraintData, variables);
+            }
+
+            // Add callback for logging simulated branching
+            solver.EnableOutput();
+
+            // Start solving the problem
+            Solver.ResultStatus resultStatus = solver.Solve();
+
+            if (resultStatus != Solver.ResultStatus.OPTIMAL)
+            {
+                Console.WriteLine("The problem does not have an optimal solution.");
+                return;
+            }
+
+            // Display the final optimal integer solution
+            Console.WriteLine("\nFinal Optimal Integer Solution:");
+            foreach (var variable in mipVariables)
+            {
+                Console.WriteLine($"{variable.Key} = {variable.Value.SolutionValue()}");
+            }
+            Console.WriteLine($"Objective value (z) = {solver.Objective().Value()}");
+        }
+
+        static void AddConstraint(Solver solver, Dictionary<string, Variable> vars, ConstraintData constraintData, string[] variables)
+        {
+            LinearExpr expr = new LinearExpr();
+
+            for (int i = 0; i < constraintData.Coefficients.Length; i++)
+            {
+                expr += constraintData.Coefficients[i] * vars[variables[i]];
+            }
+
+            switch (constraintData.Sign)
+            {
+                case "<=":
+                    solver.Add(expr <= constraintData.Rhs);
+                    break;
+                case ">=":
+                    solver.Add(expr >= constraintData.Rhs);
+                    break;
+                case "=":
+                    solver.Add(expr == constraintData.Rhs);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid inequality sign.");
+            }
+        }
+    }
+
+    public class ConstraintData
+    {
+        public double[] Coefficients { get; }
+        public double Rhs { get; }
+        public string Sign { get; }
+
+        public ConstraintData(double[] coefficients, double rhs, string sign)
+        {
+            Coefficients = coefficients;
+            Rhs = rhs;
+            Sign = sign;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
